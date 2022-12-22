@@ -9,12 +9,19 @@
   margin:  0 auto;
 }
 
-/** Can be used to center any element */
-.center {
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
+.numsCartela{
+  display: flex;
+  flex-direction: row;
+}
+
+.num{
+  width: 100%;
+  background-color: lightseagreen;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+button{
+  margin-left: 10px;
+  margin-right: 10px;
 }

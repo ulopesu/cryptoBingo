@@ -2,19 +2,24 @@
   <div class="sorteio-infos">
     <h4>Sorteio Atual - {{sorteioID}}</h4>
     <br />
-    <h5> Valor Acumulado: 150 wei</h5>
-    <h1> 02 - 05 - 01 - 07 </h1>
+    <h5> Valor Acumulado: {{montate}} wei</h5>
+    <h1> {{numSorteio}} </h1>
   </div>
   <br />
-  <button class="btn btn-primary">Comprar Cartela</button>
-  <div class="cartelas">
+
+  <button class="btn btn-primary" (click)="comprarCartela()">Comprar Cartela</button>
+
+  <div class="cartelas" *ngIf="cartelasJog.length > 0">
     <h4>Cartelas Compradas</h4>
     <ul class="list-group">
-      <li class="list-group-item">An item</li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A fourth item</li>
-      <li class="list-group-item">And a fifth one</li>
+
+      <li class="list-group-item" *ngFor="let cartela of cartelasJog">
+        <div class="numsCartela">
+          <div class="num" *ngFor="let num of cartela['2']">
+            <b>{{num}}</b>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
 </div>
