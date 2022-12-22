@@ -1,0 +1,20 @@
+.sorteio{
+  height: 100%;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.cartelas {
+  max-width: 500px;
+  margin:  0 auto;
+}
+
+/** Can be used to center any element */
+.center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+}
