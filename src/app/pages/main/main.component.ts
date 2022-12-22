@@ -12,11 +12,12 @@ export class MainComponent {
   constructor(private contractService: ContractService) {}
 
   async ngOnInit(): Promise<void> {
-    this.contractService.getSorteio().then(
-      (result) => {
-        console.log(result);
-        this.sorteioID = result.sorteioID;
-      }
-    )
+    this.contractService.loadWeb3();
+    // this.contractService.getSorteio().then(
+    //   (result) => {
+    //     console.log(result);
+    //     // this.sorteioID = result.sorteioID;
+    //   }
+    // )
   }
 }
