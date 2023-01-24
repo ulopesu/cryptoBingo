@@ -20,7 +20,7 @@ nav a.active {
   height: 100%;
   width: 100%;
   text-align: center;
-  background-color: #0c1212;
+  background-color: rgb(12, 18, 18);
   color: white;
 }
 
@@ -33,3 +33,7 @@ nav a.active {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
 }
+
+// swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+//   background: rgb(12, 18, 18)!important;
+// }

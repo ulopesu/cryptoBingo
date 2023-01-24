@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AlertService } from 'src/app/services/alert.service';
 import { ContractService } from 'src/app/services/contract.service';
 
 @Component({
@@ -16,7 +17,10 @@ export class MainComponent {
   cartelasForaDeJogo = [];
 
 
-  constructor(private contractService: ContractService) {}
+  constructor(
+    private contractService: ContractService,
+    private alertService: AlertService
+  ) {}
 
   async ngOnInit(): Promise<void> {
     await this.contractService.connect();
@@ -29,9 +33,12 @@ export class MainComponent {
     });
 
     this.contractService.getCartelasJogador().then((response) =>{
-      // console.log(response);
       if (typeof response !== 'undefined') {
         this.cartelasJogador = response;
+        // invertendo lista
+        const cartelasJogador2 = [...this.cartelasJogador];
+        this.cartelasJogador = cartelasJogador2.reverse();
+
       }
     });
 

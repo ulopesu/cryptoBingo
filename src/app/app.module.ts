@@ -9,11 +9,12 @@ import { HistoricoComponent } from './pages/historico/historico.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon'
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
   declarations: [AppComponent, MainComponent, HistoricoComponent],
-  imports: [CommonModule, BrowserModule, AppRoutingModule, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, BrowserModule, AppRoutingModule, MatCardModule, MatButtonModule, MatIconModule, SweetAlert2Module],
   providers: [],
   bootstrap: [AppComponent],
 })

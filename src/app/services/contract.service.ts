@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ethers } from 'ethers';
 
 import { cryptoBingoABI, cryptoBingoAddress } from '../utils/abis';
+import { AlertService } from './alert.service';
 declare let window: any;
 
 @Injectable({
@@ -13,6 +14,10 @@ export class ContractService {
   public isIdentified: boolean = false;
   public isConnected: boolean = false;
   private TDAContract: any;
+
+  public enableBuyConfirm: boolean = false;
+
+  constructor(private alertService: AlertService) {}
 
   async connect(): Promise<any> {
     if (typeof window.ethereum === 'undefined') {
@@ -33,7 +38,10 @@ export class ContractService {
 
         // Conectando aos Eventos
         this.TDAContract.on("CompraCartelaLog", (sender:string, msg:string) => {
-          alert(msg);
+          if(this.enableBuyConfirm){
+            this.alertService.showSuccess(msg);
+            this.enableBuyConfirm = false;
+          }
         });
         // console.log(this.TDAContract);
       });
@@ -62,6 +70,8 @@ export class ContractService {
     } else {
       const weiX = "0.00000000000000001"; // 10 wei
       await this.TDAContract.comprarCartela({value: ethers.utils.parseEther(weiX)});
+      this.alertService.showSuccess("Pedido de compra enviado!");
+      this.enableBuyConfirm = true;
     }
   }
 
