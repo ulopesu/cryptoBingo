@@ -54,7 +54,7 @@ export class ContractService {
     if(!this.isConnected || typeof this.TDAContract === 'undefined') {
       console.log("Contract NOT is Connected!");
     } else {
-      const weiX = "0.00000000000000001";
+      const weiX = "0.00000000000000001"; // 10 wei
       await this.TDAContract.comprarCartela({value: ethers.utils.parseEther(weiX)});
     }
   }

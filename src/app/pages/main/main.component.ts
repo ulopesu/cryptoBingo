@@ -8,10 +8,12 @@ import { ContractService } from 'src/app/services/contract.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  sorteioID = "##";
+  sorteioID: any = "##";
   numSorteio = "# - # - #";
   montate = "#";
-  cartelasJog = [];
+  cartelasJogador = [];
+  cartelasEmJogo = [];
+  cartelasForaDeJogo = [];
 
 
   constructor(private contractService: ContractService) {}
@@ -19,8 +21,8 @@ export class MainComponent {
   async ngOnInit(): Promise<void> {
     await this.contractService.connect();
     await new Promise(f => setTimeout(f, 500));
-    this.contractService.getSorteio().then((response) =>{
-      console.log(response);
+    this.contractService.getSorteio().then((response) => {
+      // console.log(response);
       if (typeof response !== 'undefined') {
         this.atualizarInfosSorteio(response);
       }
@@ -28,9 +30,21 @@ export class MainComponent {
     this.contractService.getCartelasJogador().then((response) =>{
       // console.log(response);
       if (typeof response !== 'undefined') {
-        this.cartelasJog = response;
+        this.cartelasJogador = response;
       }
     });
+  }
+
+  ngDoCheck() {
+    if(this.sorteioID !== "##" && this.cartelasJogador.length > 0){
+      this.cartelasEmJogo = [];
+      for (let cartela of this.cartelasJogador) {
+        if(cartela[1]["_hex"] == this.sorteioID._hex) {
+          this.cartelasEmJogo.push(cartela);
+        }
+      }
+      // console.log(this.cartelasEmJogo);
+    }
   }
 
   atualizarInfosSorteio(sorteio: any) {
@@ -52,7 +66,7 @@ export class MainComponent {
 
   comprarCartela() {
     this.contractService.comprarCartela().then((response) =>{
-      console.log(response);
+      // console.log(response);
     }).catch((err) => {
       if (err.hasOwnProperty("error")) {
         alert(err.error);
