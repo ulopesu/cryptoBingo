@@ -39,8 +39,8 @@ export class ContractService {
         // Conectando aos Eventos
         this.TDAContract.on("CompraCartelaLog", (sender:string, msg:string) => {
           if(this.enableBuyConfirm){
-            this.alertService.showSuccess(msg);
             this.enableBuyConfirm = false;
+            this.alertService.showSuccess(msg, true);
           }
         });
         // console.log(this.TDAContract);
@@ -68,10 +68,10 @@ export class ContractService {
     if(!this.isConnected || typeof this.TDAContract === 'undefined') {
       console.log("Contract NOT is Connected!");
     } else {
-      const weiX = "0.00000000000000001"; // 10 wei
-      await this.TDAContract.comprarCartela({value: ethers.utils.parseEther(weiX)});
-      this.alertService.showSuccess("Pedido de compra enviado!");
+      const valor = 50000000; // 0.05 Eth in gwei
+      await this.TDAContract.comprarCartela({value: ethers.utils.parseUnits(`${valor}`, 'gwei')});
       this.enableBuyConfirm = true;
+      this.alertService.showSuccess("Pedido de compra enviado!");
     }
   }
 

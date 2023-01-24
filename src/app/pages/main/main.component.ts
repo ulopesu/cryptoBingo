@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AlertService } from 'src/app/services/alert.service';
+import { ethers } from 'ethers';
 import { ContractService } from 'src/app/services/contract.service';
 
 @Component({
@@ -16,11 +15,7 @@ export class MainComponent {
   cartelasEmJogo = [];
   cartelasForaDeJogo = [];
 
-
-  constructor(
-    private contractService: ContractService,
-    private alertService: AlertService
-  ) {}
+  constructor(private contractService: ContractService) {}
 
   async ngOnInit(): Promise<void> {
     await this.contractService.connect();
@@ -58,7 +53,7 @@ export class MainComponent {
 
   atualizarInfosSorteio(sorteio: any) {
     this.sorteioID = sorteio.sorteioID;
-    this.montate = sorteio.balance;
+    this.montate = ethers.utils.formatEther(sorteio.balance);
 
     // PEGA NÚMEROS SORTEADOS
     this.numSorteio = "";
@@ -85,7 +80,7 @@ export class MainComponent {
   }
 
   refresh(): void {
-      window.location.reload();
+    window.location.reload();
   }
 }
 

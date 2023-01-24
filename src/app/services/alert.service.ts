@@ -24,15 +24,21 @@ export class AlertService {
     });
   }
 
-  showSuccess(message: string) {
+  showSuccess(message: string, enableReload: boolean = false) {
     Swal.fire({
       title: 'OK!',
       text: message,
       icon: 'success',
       confirmButtonText: 'Fechar',
-      background: '#0c1212',
+      background: '#111111',
       color: '#ffffff',
       confirmButtonColor: '#ff4500',
+      backdrop: false
+    }).then(function(result) {
+      // console.log(result);
+      if (result.value && enableReload) {
+        window.location.reload();
+      }
     });
   }
 }
