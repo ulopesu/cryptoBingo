@@ -1,12 +1,13 @@
 <div class="sorteio">
   <div class="sorteio-infos">
     <h4>Sorteio Atual - {{sorteioID}}</h4>
-    <br />
     <h5> Valor Acumulado: {{montate}} Eth</h5>
+    <br/>
     <mat-card class="numsort-card">
       <h1>{{numSorteio}}</h1>
     </mat-card>
   </div>
+  <h4>Vitórias:  {{vix_count}}</h4>
   <div class="div-btn">
     <div class="div1">
       <button mat-fab class="refreshButton" (click)="refresh()">

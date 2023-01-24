@@ -14,6 +14,8 @@ export class MainComponent {
   cartelasJogador = [];
   cartelasEmJogo = [];
   cartelasForaDeJogo = [];
+  vix_count = 0;
+  is_loaded = false;
 
   constructor(private contractService: ContractService) {}
 
@@ -33,21 +35,30 @@ export class MainComponent {
         // invertendo lista
         const cartelasJogador2 = [...this.cartelasJogador];
         this.cartelasJogador = cartelasJogador2.reverse();
-
+        // console.log(this.cartelasJogador);
       }
     });
-
   }
 
   ngDoCheck() {
-    if(this.sorteioID !== "##" && this.cartelasJogador.length > 0){
+    if(
+      this.sorteioID !== "##" &&
+      this.cartelasJogador.length > 0 &&
+      !this.is_loaded
+    ){
       this.cartelasEmJogo = [];
+      this.vix_count = 0;
+
       for (let cartela of this.cartelasJogador) {
+        if(cartela["premiada"]){
+          this.vix_count++;
+        }
         if(cartela[1]["_hex"] == this.sorteioID._hex) {
           this.cartelasEmJogo.push(cartela);
         }
       }
-      // console.log(this.cartelasEmJogo);
+      // console.log(this.vix_count);
+      this.is_loaded = true;
     }
   }
 

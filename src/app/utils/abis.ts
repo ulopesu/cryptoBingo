@@ -1,4 +1,4 @@
-export const cryptoBingoAddress = '0x10207E38afE3C00BBf60E07a2A27D3f463E575C0';
+export const cryptoBingoAddress = '0x1f46f788d955C4ccB54354fe72cBdD391949BC68';
 export const cryptoBingoABI = [
 	{
 		"inputs": [],
@@ -23,26 +23,6 @@ export const cryptoBingoABI = [
 		],
 		"name": "CompraCartelaLog",
 		"type": "event"
-	},
-	{
-		"inputs": [],
-		"name": "comprarCartela",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "pagarDevPai",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
 	},
 	{
 		"inputs": [
@@ -76,6 +56,13 @@ export const cryptoBingoABI = [
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "comprarCartela",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -161,6 +148,19 @@ export const cryptoBingoABI = [
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "pagarDevPai",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
