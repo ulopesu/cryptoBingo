@@ -7,9 +7,20 @@
       <h1>{{numSorteio}}</h1>
     </mat-card>
   </div>
-  <br/>
+  <div class="div-btn">
+    <div class="div1">
+      <button mat-fab class="refreshButton" (click)="refresh()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+    <div class="div2"><h4>Minhas Cartelas</h4></div>
+    <div class="div3">
+      <button mat-fab class="comprarButton" (click)="comprarCartela()">
+        <mat-icon>plus_one</mat-icon>
+      </button>
+    </div>
+  </div>
   <div class="cartelas" *ngIf="cartelasEmJogo.length > 0">
-    <h4>Minhas Cartelas</h4>
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let cartela of cartelasEmJogo">
           <div class="numsCartela">
@@ -20,10 +31,6 @@
         </li>
       </ul>
   </div>
-  <button mat-fab extended class="comprarButton" (click)="comprarCartela()">
-    <mat-icon>plus_one</mat-icon>
-    Comprar
-  </button>
   <br/>
   <div class="footer">
     Desenvolvido por:

@@ -27,12 +27,14 @@ export class MainComponent {
         this.atualizarInfosSorteio(response);
       }
     });
+
     this.contractService.getCartelasJogador().then((response) =>{
       // console.log(response);
       if (typeof response !== 'undefined') {
         this.cartelasJogador = response;
       }
     });
+
   }
 
   ngDoCheck() {
@@ -75,5 +77,8 @@ export class MainComponent {
     });
   }
 
+  refresh(): void {
+      window.location.reload();
+  }
 }
 

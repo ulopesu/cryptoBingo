@@ -22,6 +22,7 @@ export class ContractService {
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
     provider.send("eth_requestAccounts", []).then(() => {
       provider.listAccounts().then((accounts:any) => {
+        // console.log(accounts[0]);
         const signer = provider.getSigner(accounts[0]);
         this.TDAContract = new ethers.Contract(
           cryptoBingoAddress,
@@ -29,6 +30,11 @@ export class ContractService {
           signer
         );
         this.isConnected = true;
+
+        // Conectando aos Eventos
+        this.TDAContract.on("CompraCartelaLog", (sender:string, msg:string) => {
+          alert(msg);
+        });
         // console.log(this.TDAContract);
       });
     });
@@ -58,7 +64,5 @@ export class ContractService {
       await this.TDAContract.comprarCartela({value: ethers.utils.parseEther(weiX)});
     }
   }
-
-
 
 }
