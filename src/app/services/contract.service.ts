@@ -21,7 +21,10 @@ export class ContractService {
 
   async connect(): Promise<any> {
     if (typeof window.ethereum === 'undefined') {
+      const msg = "Extensão não instalada..."
+      this.alertService.showMetaMaskError(msg);
       console.log("Metamask NOT Installed!");
+      return;
     }
 
     const provider = new ethers.providers.Web3Provider(window.ethereum, "any");

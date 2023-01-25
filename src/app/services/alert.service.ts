@@ -12,6 +12,10 @@ export class AlertService {
       text: message,
       icon: 'error',
       confirmButtonText: 'Fechar',
+      background: '#111111',
+      color: '#ffffff',
+      confirmButtonColor: '#ff4500',
+      backdrop: false
     });
   }
 
@@ -21,6 +25,23 @@ export class AlertService {
       text: message,
       icon: 'error',
       confirmButtonText: 'Fechar',
+      background: '#111111',
+      color: '#ffffff',
+      confirmButtonColor: '#ff4500',
+      backdrop: false
+    });
+  }
+
+  showMetaMaskError(message: string) {
+    Swal.fire({
+      title: 'MetaMask Error!',
+      text: message,
+      icon: 'error',
+      confirmButtonText: 'Fechar',
+      background: '#111111',
+      color: '#ffffff',
+      confirmButtonColor: '#ff4500',
+      backdrop: false
     });
   }
 

@@ -16,12 +16,19 @@ export class MainComponent {
   cartelasForaDeJogo = [];
   vix_count = 0;
   is_loaded = false;
+  is_connected = true;
 
   constructor(private contractService: ContractService) {}
 
   async ngOnInit(): Promise<void> {
     await this.contractService.connect();
     await new Promise(f => setTimeout(f, 500));
+    this.is_connected = this.contractService.isConnected;
+
+    if(!this.is_connected) {
+      return;
+    }
+
     this.contractService.getSorteio().then((response) => {
       // console.log(response);
       if (typeof response !== 'undefined') {

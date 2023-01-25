@@ -21,7 +21,30 @@
       </button>
     </div>
   </div>
-  <div class="cartelas" *ngIf="cartelasEmJogo.length > 0">
+  <div class="cartelas" *ngIf="!is_loaded && !is_connected">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="numsCartela">
+          <b>Recarregue a página clicando no botão: <mat-icon>refresh</mat-icon></b>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="numsCartela" style="color: brown;">
+          <b>É necessário logar na extensão do MetaMask</b>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="cartelas" *ngIf="cartelasEmJogo.length == 0 && is_loaded">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="numsCartela">
+          <b>Compre novas cartelas clicando no botão (+1)</b>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="cartelas" *ngIf="cartelasEmJogo.length > 0 && is_loaded">
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let cartela of cartelasEmJogo">
           <div class="numsCartela">
