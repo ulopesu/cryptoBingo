@@ -23,7 +23,7 @@
     "bootstrap": "^5.2.3",
     "ethers": "^5.7.2",
     "rxjs": "~7.5.0",
-    "sweetalert2": "^11.7.0"
+    "sweetalert2": "^11.4.8"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.0",
