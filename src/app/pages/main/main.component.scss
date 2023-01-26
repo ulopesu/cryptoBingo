@@ -82,11 +82,18 @@ h1 {
 }
 .div2 {
   grid-area: 1 / 2 / 2 / 3;
-  margin-top: 20px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
 }
 .div3 {
   grid-area: 1 / 3 / 2 / 4;
   text-align: start;
   margin-left: 40px;
   margin-top: 20px;
+}
+
+.qtd-cartelas{
+  margin-top: 12px;
+  margin-left: 10px;
 }
