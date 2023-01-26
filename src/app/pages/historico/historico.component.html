@@ -1,1 +1,31 @@
-<p>historico works!</p>
+<div class="sorteio">
+  <button mat-fab extended class="btn-voltar" (click)="goToMain()">
+    <mat-icon>arrow_back</mat-icon>
+    Voltar
+  </button>
+  <h4>Vitórias: {{vix_count}}</h4>
+  <br/>
+  <div><h4>Sorteios Participados</h4></div>
+  <div class="cartelas" *ngFor="let id of sorteiosID">
+      <ul class="list-group">
+        <li class="list-group-item titulo-sorteio">
+          <b><h5>Sorterio {{id}}</h5></b>
+        </li>
+        <li class="list-group-item" *ngFor="let cartela of sorteios[id]">
+          <div class="numsCartela">
+            <div [ngClass]="cartela['premiada'] ? 'numP': 'num'"  *ngFor="let num of cartela['numeros']">
+              <b>{{num}}</b>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <br/>
+  </div>
+  <br/>
+  <div class="footer">
+    by
+    <a href="https://www.linkedin.com/in/usiel-f-lopes-jr-357562168/">
+      UlopesU
+    </a>
+  </div>
+</div>

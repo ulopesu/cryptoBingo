@@ -10,13 +10,20 @@
   <h4>Vitórias:  {{vix_count}}</h4>
   <div class="div-btn">
     <div class="div1">
-      <button mat-fab class="refreshButton" (click)="refresh()">
+      <button
+        mat-fab class="BtnsIcon"
+        *ngIf="cartelasForaDeJogo.length > 0 && is_loaded"
+        (click)="goToHistoric()"
+      >
+        <mat-icon>history</mat-icon>
+      </button>
+      <button mat-fab class="BtnsIcon" (click)="refresh()">
         <mat-icon>refresh</mat-icon>
       </button>
     </div>
     <div class="div2"><h4>Minhas Cartelas</h4></div>
     <div class="div3">
-      <button mat-fab class="comprarButton" (click)="comprarCartela()">
+      <button mat-fab class="BtnsIcon" (click)="comprarCartela()">
         <mat-icon>plus_one</mat-icon>
       </button>
     </div>
@@ -48,7 +55,7 @@
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let cartela of cartelasEmJogo">
           <div class="numsCartela">
-            <div class="num" *ngFor="let num of cartela['2']">
+            <div class="num" *ngFor="let num of cartela['numeros']">
               <b>{{num}}</b>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ethers } from 'ethers';
 import { ContractService } from 'src/app/services/contract.service';
 
@@ -18,7 +19,10 @@ export class MainComponent {
   is_loaded = false;
   is_connected = true;
 
-  constructor(private contractService: ContractService) {}
+  constructor(
+    private router: Router,
+    private contractService: ContractService
+  ) {}
 
   async ngOnInit(): Promise<void> {
     await this.contractService.connect();
@@ -62,6 +66,8 @@ export class MainComponent {
         }
         if(cartela[1]["_hex"] == this.sorteioID._hex) {
           this.cartelasEmJogo.push(cartela);
+        } else {
+          this.cartelasForaDeJogo.push(cartela);
         }
       }
       // console.log(this.vix_count);
@@ -99,6 +105,16 @@ export class MainComponent {
 
   refresh(): void {
     window.location.reload();
+  }
+
+  async goToHistoric() {
+    const data = {
+      state: {
+        cartelasForaDeJogo: this.cartelasForaDeJogo,
+        vix_count: this.vix_count
+      },
+    };
+    await this.router.navigateByUrl("/historico", data);
   }
 }
 
