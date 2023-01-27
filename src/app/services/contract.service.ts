@@ -15,7 +15,7 @@ export class ContractService {
   public isConnected: boolean = false;
   private TDAContract: any;
 
-  public enableBuyConfirm: boolean = false;
+  public enableConfirm: boolean = false;
 
   constructor(private alertService: AlertService) {}
 
@@ -41,9 +41,15 @@ export class ContractService {
 
         // Conectando aos Eventos
         this.TDAContract.on("CompraCartelaLog", (sender:string, msg:string) => {
-          if(this.enableBuyConfirm){
-            this.enableBuyConfirm = false;
+          if(this.enableConfirm){
+            this.enableConfirm = false;
             this.alertService.showSuccess(msg, true);
+          }
+        });
+        this.TDAContract.on("GanhadorLog", (sender:string, msg:string) => {
+          if(this.enableConfirm){
+            this.enableConfirm = false;
+            this.alertService.showSuccess(msg, true, true);
           }
         });
         // console.log(this.TDAContract);
@@ -73,7 +79,7 @@ export class ContractService {
     } else {
       const valor = 50000000; // 0.05 Eth in gwei
       await this.TDAContract.comprarCartela({value: ethers.utils.parseUnits(`${valor}`, 'gwei')});
-      this.enableBuyConfirm = true;
+      this.enableConfirm = true;
       this.alertService.showSuccess("Pedido de compra enviado!");
     }
   }

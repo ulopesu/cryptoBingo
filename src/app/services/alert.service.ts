@@ -45,13 +45,13 @@ export class AlertService {
     });
   }
 
-  showSuccess(message: string, enableReload: boolean = false) {
+  showSuccess(message: string, enableReload: boolean = false, isVitoria: boolean = false) {
     Swal.fire({
-      title: 'OK!',
+      title: isVitoria ? 'Vitória!' : 'OK!',
       text: message,
       icon: 'success',
       confirmButtonText: 'Fechar',
-      background: '#111111',
+      background: isVitoria ? '#800080' : '#111111',
       color: '#ffffff',
       confirmButtonColor: '#ff4500',
       backdrop: false

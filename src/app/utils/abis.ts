@@ -1,4 +1,4 @@
-export const cryptoBingoAddress = '0x7d4594Faab2cf874B10a2d034C380bC84EE0f191';
+export const cryptoBingoAddress = '0x57A6304F15d9dC856993Ad84E9eCc1f553883d7D';
 export const cryptoBingoABI = [
 	{
 		"inputs": [],
@@ -30,6 +30,25 @@ export const cryptoBingoABI = [
 		"outputs": [],
 		"stateMutability": "payable",
 		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "sender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "message",
+				"type": "string"
+			}
+		],
+		"name": "GanhadorLog",
+		"type": "event"
 	},
 	{
 		"inputs": [],
