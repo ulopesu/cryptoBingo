@@ -78,7 +78,12 @@ export class ContractService {
       console.log("Contract NOT is Connected!");
     } else {
       const valor = 50000000; // 0.05 Eth in gwei
-      await this.TDAContract.comprarCartela({value: ethers.utils.parseUnits(`${valor}`, 'gwei')});
+      await this.TDAContract.comprarCartela(
+        {
+          value: ethers.utils.parseUnits(`${valor}`, 'gwei'),
+          gasLimit:2000000
+        }
+      );
       this.enableConfirm = true;
       this.alertService.showSuccess("Pedido de compra enviado!");
     }
