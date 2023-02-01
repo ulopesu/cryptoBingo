@@ -1,4 +1,4 @@
-export const cryptoBingoAddress = '0x57A6304F15d9dC856993Ad84E9eCc1f553883d7D';
+export const cryptoBingoAddress = '0xf067f30813830269Ab0fF9A42cD0cd9831a1901b';
 export const cryptoBingoABI = [
 	{
 		"inputs": [],
