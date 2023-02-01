@@ -25,13 +25,6 @@ export const cryptoBingoABI = [
 		"type": "event"
 	},
 	{
-		"inputs": [],
-		"name": "comprarCartela",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -49,26 +42,6 @@ export const cryptoBingoABI = [
 		],
 		"name": "GanhadorLog",
 		"type": "event"
-	},
-	{
-		"inputs": [],
-		"name": "pagarDevPai",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "resortearNums",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
 	},
 	{
 		"inputs": [
@@ -102,6 +75,13 @@ export const cryptoBingoABI = [
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "comprarCartela",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -190,6 +170,26 @@ export const cryptoBingoABI = [
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "pagarDevPai",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "resortearNums",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -216,7 +216,7 @@ export const cryptoBingoABI = [
 				"type": "address"
 			}
 		],
-		"name": "totalCartelasJog",
+		"name": "totalCartelasJogador",
 		"outputs": [
 			{
 				"internalType": "uint256",
